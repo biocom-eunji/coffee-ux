@@ -1106,7 +1106,7 @@ function updateBodyScrollLock(){
 </script>
 <script src="../social-login.js"></script>
 <script>TCCSocial.mount(document.getElementById('suSocial'),'signup');
-(function(){ var so=document.getElementById('suSocial'); if(!so) return; var kk=so.querySelector('.sl-kakao'); if(kk&&kk.lastChild&&kk.lastChild.nodeType===3) kk.lastChild.nodeValue='카카오로 로그인 · 회원가입'; if(!so.querySelector('.tb-sl-cap')){ var cp=document.createElement('p'); cp.className='tb-sl-cap'; cp.textContent='처음이어도 같은 버튼으로 바로 가입돼요. 웰컴 쿠폰 5종을 드려요.'; so.appendChild(cp); } })();</script>
+(function(){ var so=document.getElementById('suSocial'); if(!so) return; var kk=so.querySelector('.sl-kakao'); if(kk&&kk.lastChild&&kk.lastChild.nodeType===3) kk.lastChild.nodeValue='카카오로 1초만에 시작하기'; if(!so.querySelector('.tb-sl-cap')){ var cp=document.createElement('p'); cp.className='tb-sl-cap'; cp.textContent='처음이어도 같은 버튼으로 바로 가입돼요. 웰컴 쿠폰 5종을 드려요.'; so.appendChild(cp); } })();</script>
 
 <style id="fb-thumbs">
 .imgbox.has-photo{background:#F3F3F3}
@@ -1345,7 +1345,7 @@ function updateBodyScrollLock(){
     if(!card||!box||!sb||!$('suPriv')||!document.querySelector('.tb-pwrule')) return false;
     if(card.dataset.tb2) return true; card.dataset.tb2='1';
     var name=$('suName'), em=$('suEmail'), pw=$('suPw'), code=$('suCode'), a1=$('suAgree'), a2=$('suAge'), a3=$('suPriv'), note=$('suNote');
-    var kb0=$('suSocial').querySelector('.sl-kakao'); if(kb0) kb0.setAttribute('aria-label','카카오로 시작하기');
+    var kb0=$('suSocial').querySelector('.sl-kakao'); if(kb0) kb0.setAttribute('aria-label','카카오로 1초만에 시작하기');
     /* 이메일 중복 확인 */
     var f=em.closest('.su-field'), row=document.createElement('div'); row.className='tb-em'; em.parentNode.insertBefore(row,em); row.appendChild(em);
     var chk=document.createElement('button'); chk.type='button'; chk.className='btn btn-line tb-dup'; chk.textContent='중복 확인'; row.appendChild(chk);
