@@ -1988,7 +1988,7 @@ html:not([data-view="pc"]) .pair[data-pair="collection"] { display: none !import
       if (!f) return;
       var q = search || '';
       /* 정기배송 신청 화면(?sub=1)처럼 같은 페이지라도 주소의 쿼리가 다르면 다시 불러옴 */
-      if (!f.getAttribute('src') || (search !== undefined && (f.dataset.q || '') !== q)) { f.dataset.q = q; f.src = v + '-' + page + '.html' + q + (hash || ''); }
+      if (!f.getAttribute('src') || (search !== undefined && (f.dataset.q || '') !== q)) { f.dataset.q = q; f.src = v + '/' + v + '-' + page + '.html' + q + (hash || ''); }
       else if (hash) tell(f, { type: 'hash', hash: hash });
     });
   }
