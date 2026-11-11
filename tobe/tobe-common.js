@@ -483,7 +483,7 @@
     + '.tb-pal-list[hidden]{display:none}'
     + '#tbHome .tb-pal-sec{margin:0 0 8px}';
   (document.head || document.documentElement).appendChild(st);
-  function link(text) { return '<a class="tb-pal" href="#palate" data-palate><span>' + text + '</span><b>커피 취향 찾기 ›</b></a>'; }
+  function link(text) { return '<a class="tb-pal" href="' + (document.getElementById('palateModal') ? '#palate' : 'guide.html#choosing') + '" data-palate><span>' + text + '</span><b>커피 취향 찾기 ›</b></a>'; }
   function mk(cls, text) { var d = document.createElement('div'); d.className = cls; d.innerHTML = link(text); return d; }
   function put() {
     if (file === 'home.html') {

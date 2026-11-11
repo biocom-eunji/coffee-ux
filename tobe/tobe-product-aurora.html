@@ -989,7 +989,7 @@ nav .nav-priv:hover{background:#232d38}
   </div>
 
   <div class="gnb-right">
-    <button class="nav-priv" type="button" id="loungeOpen" aria-haspopup="dialog" aria-controls="loungeModal">리저브 클럽</button>
+    <a class="nav-priv" href="reserve-club.html">리저브 클럽</a>
     <a class="icon-btn" aria-label="검색" href="search.html">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
     </a>
@@ -1423,29 +1423,7 @@ nav .nav-priv:hover{background:#232d38}
   </div>
 </div>
 
-<!-- 06-1 RESERVE CLUB, 모달: GNB의 RESERVE CLUB 버튼 클릭 시에만 노출 -->
-<!-- 여기까지는 "이런 이름/자격이 있다"는 안내이며, 실제 혜택 상세·자격 확인은
-     로그인 + 최근 12개월 구매내역 조회 API 연동이 필요합니다. (TODO: 백엔드 연동) -->
-<div class="lounge-modal" id="loungeModal" role="dialog" aria-modal="true" aria-labelledby="loungeTitle" hidden>
-  <div class="lounge-backdrop" id="loungeBackdrop"></div>
-  <div class="lounge-card rc-inv">
-    <button class="lounge-close" type="button" id="loungeClose" aria-label="닫기">×</button>
-    <div class="rc-inv-photo" aria-hidden="true"><img src="../images/reserve-club-invite.jpg" alt=""></div>
-    <div class="rc-inv-body">
-      <div class="sec-eyebrow">PREMIUM MEMBERSHIP</div>
-      <h2 id="loungeTitle">커피를 즐기는 시간,<br>더 특별하게.</h2>
-      <p class="rc-inv-sub">더클린커피의 프리미엄 멤버십, 리저브 클럽.</p>
-      <p class="rc-inv-note">로스터와 함께하는 커핑 클래스부터 원두 선택을 돕는 1:1 컨시어지까지.<br>회원만을 위한 커피와 서비스를 준비했습니다.</p>
-      <ul class="rc-inv-perks">
-        <li><b>커핑 클래스 초청</b><span>메인 로스터와 여러 원두를 맛보며 맛과 향의 차이를 알아가는 시간.</span></li>
-        <li><b>메인 로스터 컨시어지</b><span>원두 선택부터 추출 방법까지, 취향에 맞춰 제안하는 1:1 서비스.</span></li>
-        <li><b>마이크로롯 우선 구매</b><span>소량 입고되는 특별한 리저브 원두를 먼저 만나보는 기회.</span></li>
-        <li><b>시그니처 기프트</b><span>회원만을 위해 준비한 특별한 선물.</span></li>
-      </ul>
-      <div class="rc-inv-cta"><a class="rc-inv-go" href="reserve-club.html" data-rc-enter="1"><span>리저브 클럽 자세히 보기</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    </div>
-  </div>
-</div>
+
 
 <footer>
   <div class="foot-row">

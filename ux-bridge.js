@@ -97,6 +97,21 @@
     if (!t.closest(NO_MIRROR)) send({ type: 'click', sel: path(t) });
   }, true);
 
+  /* location.href = '…' 같은 코드 이동도 링크 클릭처럼 부모가 화면을 바꾸게 함 (쇼케이스 안에서 404로 끊기던 것 보완) */
+  if (window.navigation && navigation.addEventListener) {
+    navigation.addEventListener('navigate', function (e) {
+      if (mirroring || e.hashChange || e.downloadRequest !== null || e.formData) return;
+      if (e.navigationType !== 'push' && e.navigationType !== 'replace') return;
+      var u;
+      try { u = new URL(e.destination.url); } catch (x) { return; }
+      if (u.origin !== location.origin) return;
+      var f = u.pathname.split('/').pop();
+      if (!/\.html$/.test(f)) return;
+      e.preventDefault();
+      send({ type: 'nav', file: f, hash: u.hash, search: u.search });
+    });
+  }
+
   window.addEventListener('message', function (e) {
     var d = e.data;
     if (!d || d.src !== 'ux-parent') return;
