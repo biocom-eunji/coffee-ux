@@ -440,6 +440,28 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
 })();
 
+/* ── PC 헤더: 「정기구독」과 「브랜드 스토리」 사이에 「이벤트」 탭 (기획 요청 2026-11-12) ──
+   모바일 메뉴의 순서(제품 구매 → 정기구독 → 이벤트 → 브랜드 스토리)와 맞춤. 제품 구매 펼침의 「이벤트」 열은 그대로 둠. 되돌리려면 이 블록을 지우세요. */
+(function () {
+  function run() {
+    var gc = document.querySelector('#nav .gnb-center');
+    if (!gc) return false;
+    if (gc.querySelector(':scope > a[data-tb-event]')) return true;
+    var sub = gc.querySelector(':scope > a[href="subscribe.html"]');
+    if (!sub) return false;
+    var a = document.createElement('a'); a.href = 'events.html'; a.textContent = '이벤트'; a.setAttribute('data-tb-event', '1');
+    if (/\/(tobe-)?events?\.html$/.test(location.pathname)) a.setAttribute('aria-current', 'page');
+    sub.insertAdjacentElement('afterend', a);
+    return true;
+  }
+  /* 이벤트 탭이 늘어난 만큼, 좁은 PC 화면(901~1100px)에서 메뉴가 넘치지 않게 간격을 줄임 */
+  var st = document.createElement('style');
+  st.textContent = '@media(min-width:901px) and (max-width:1100px){#nav .gnb-center{gap:24px!important}#nav{padding-left:36px!important;padding-right:36px!important}}';
+  (document.head || document.documentElement).appendChild(st);
+  var n = 0, t = setInterval(function () { if (run() || ++n > 40) clearInterval(t); }, 150);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
+
 /* ── 이커머스 화면 배경 흰색 (모바일 · PC 공통) ──
    상품 목록 · 정기구독 · 검색 · 상품 상세 · 장바구니 · 결제 · 주문 완료 · 결제 실패 · 주문 조회. 홈 · 스토리 · 마이페이지 등은 그대로.
    미색 바탕이던 화면 바깥과, 화면 폭 전체를 차지하는 미색 구간만 흰색으로 바꿈(카드 안 상자 색은 그대로). */
@@ -598,4 +620,14 @@
   }
   var n = 0, t = setInterval(function () { if (move() || ++n > 40) clearInterval(t); }, 200);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', move); else move();
+})();
+
+/* 예외 · 빈 상태 화면(?state=…) 불러오기 — 로그인 실패 · 가입 입력 오류 · 신규 회원 마이페이지 · 빈 장바구니 결제 · 주문 없는 주문 완료.
+   가입 · 결제 · 주문 완료는 상태 주소가 없어도 입력 검증과 빈 상태 안내가 필요해 항상 불러옴 */
+(function () {
+  var page = location.pathname.split('/').pop().replace(/^tobe-/, '').replace(/\.html$/, '');
+  var hasState = /[?&]state=/.test(location.search) || (/[?&]applied=1/.test(location.search) && page === 'business-login');
+  var always = { signup: 1, checkout: 1, 'order-complete': 1, mypage: 1 }, onState = { login: 1, mypage: 1, 'find-account': 1, 'order-lookup': 1 };
+  if (!(always[page] || hasState)) return;   /* 상태 주소(?state=…)가 있으면 어느 화면이든 불러옴 */
+  var s = document.createElement('script'); s.src = 'tobe-states.js'; document.body.appendChild(s);
 })();

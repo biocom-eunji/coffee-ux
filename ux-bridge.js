@@ -9,7 +9,14 @@
   var COLOR = VARIANT === 'asis' ? '#C4553F' : '#3FAFD3';
   /* 핀은 화면 폭에 따라 다른 묶음을 씁니다: 모바일(≤900px)은 UX_PINS, PC는 UX_PINS_PC */
   function isPC() { return window.innerWidth > 900; }
-  function curPins() { var src = isPC() ? window.UX_PINS_PC : window.UX_PINS; return ((src || {})[PAGE] || {})[VARIANT] || []; }
+  /* 예외 상태 화면(?state=…)은 일반 화면과 다른 핀 묶음('x-' + 화면 이름)을 씀 */
+  var STATE = (location.search.match(/[?&]state=([a-z0-9-]+)/) || [])[1] || '';
+  function curPins() {
+    var src = (isPC() ? window.UX_PINS_PC : window.UX_PINS) || {};
+    /* 상태 화면은 'x-화면:상태' → 'x-화면' → 화면 순서로 핀 묶음을 찾음 */
+    var set = STATE ? (src['x-' + PAGE + ':' + STATE] || src['x-' + PAGE]) : src[PAGE];
+    return (set || {})[VARIANT] || [];
+  }
   var pins = curPins(), mode = isPC();
   var mirroring = false, ignoreScrollUntil = 0, active = 0;
 
@@ -31,7 +38,7 @@
     pins.forEach(function (p, n) {
       if (placed[n] && placed[n].isConnected) return;
       var el = document.querySelectorAll(p.sel)[p.i || 0];
-      if (!el || (!el.offsetParent && getComputedStyle(el).position !== 'fixed')) return;
+      if (!el || (!el.offsetParent && getComputedStyle(el).position !== 'fixed' && !el.getClientRects().length)) return;   /* 고정 위치 창(모달) 안의 요소도 화면에 그려져 있으면 점을 붙임 */
       if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
       var d = document.createElement('i');
       d.className = 'uxpin';

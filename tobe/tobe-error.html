@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>안내 — THE CLEAN COFFEE</title>
+<!-- 시스템 안내 화면: 점검 중 · 서버 오류 · 인터넷 연결 끊김. 주소 뒤에 ?state=maint | 500 | offline 을 붙여 상태를 고름 (기획 결정 2026-11-12) -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--paper:#F5F3EE;--white:#fff;--ink:#111921;--sky:#5CC0E1;--slate:#454C55;--mist:#8A9099;--hair:#E6E4DE;--sans:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;font-family:var(--sans);color:var(--slate);background:var(--paper);-webkit-font-smoothing:antialiased}
+.top{padding:22px 24px;display:flex;align-items:center;gap:10px}
+.dots{display:flex;flex-direction:column;gap:5px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--ink);display:block}.dots i+i{background:var(--sky)}
+.brand{font-size:13px;font-weight:800;letter-spacing:.16em;line-height:1.3;color:var(--ink)}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:100%;max-width:440px;text-align:center}
+.ic{width:72px;height:72px;margin:0 auto 24px;border-radius:50%;background:#EAF5FA;display:flex;align-items:center;justify-content:center}
+.ic svg{width:34px;height:34px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+h1{font-size:24px;line-height:1.35;font-weight:700;color:var(--ink);letter-spacing:-.01em;word-break:keep-all}
+p.lead{margin-top:12px;font-size:15px;line-height:1.7;color:var(--slate);word-break:keep-all}
+.box{margin:24px 0 0;padding:16px 18px;background:var(--white);border:1px solid var(--hair);border-radius:8px;text-align:left}
+.box .r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:14px}.box .r+.r{border-top:1px solid var(--hair)}.box .r span{color:var(--mist)}.box .r b{color:var(--ink);text-align:right}
+.acts{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.acts a,.acts button{display:flex;align-items:center;justify-content:center;height:54px;border-radius:8px;font:inherit;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.acts .p{border:0;background:var(--ink);color:#fff}.acts .s{border:1px solid var(--hair);background:var(--white);color:var(--ink)}
+.help{margin-top:22px;font-size:13px;line-height:1.7;color:var(--mist);word-break:keep-all}.help a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.code{margin-top:6px;font-size:12px;color:var(--mist);letter-spacing:.04em}
+@media(min-width:600px){h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="dots"><i></i><i></i></div><div class="brand">THE CLEAN<br>COFFEE</div></div>
+<main><div class="card" id="card"></div></main>
+<script>
+(function () {
+  var st = (location.search.match(/[?&]state=([a-z0-9]+)/) || [])[1] || 'maint';
+  var ICON = {
+    maint: '<svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5 5L3.5 17.5a1.5 1.5 0 0 0 2.1 2.1l6.2-6.2a4 4 0 0 0 5-5l-2.4 2.4-2-.5-.5-2z"/></svg>',
+    '500': '<svg viewBox="0 0 24 24"><path d="M12 3.5l9 15.5H3z"/><path d="M12 10v4M12 17v.01"/></svg>',
+    offline: '<svg viewBox="0 0 24 24"><path d="M2.5 9a15 15 0 0 1 19 0M5.5 12.5a10 10 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0M12 19.5v.01"/><path d="M4 4l16 16"/></svg>'
+  };
+  var V = {
+    maint: { t: '서비스 점검 중이에요', l: '더 안정적으로 이용하실 수 있도록 점검하고 있어요. 점검이 끝나면 바로 이용하실 수 있어요.',
+      box: '<div class="r"><span>점검 일시</span><b>2026.11.20(금) 02:00 ~ 05:00</b></div>',
+      acts: '<button class="p" type="button" onclick="location.reload()">새로고침</button>', help: '급한 문의는 <a href="tel:0220390551">고객센터 02-2039-0551</a>로 연락해 주세요.' },
+    '500': { t: '일시적인 오류가 생겼어요', l: '잠시 후 다시 시도해 주세요. 계속 같은 화면이 나오면 고객센터로 알려 주세요.',
+      box: '', acts: '<button class="p" type="button" onclick="location.reload()">다시 시도</button><a class="s" href="home.html">홈으로</a>', help: '계속 안 되면 <a href="support.html#contact">1:1 문의</a> 또는 <a href="tel:0220390551">02-2039-0551</a>로 알려 주세요.', code: '오류 코드 500' },
+    offline: { t: '인터넷에 연결되어 있지 않아요', l: '연결 상태를 확인한 뒤 다시 시도해 주세요. 와이파이나 데이터를 켜면 이어서 이용하실 수 있어요.',
+      box: '', acts: '<button class="p" type="button" onclick="location.reload()">다시 시도</button>', help: '' }
+  };
+  var v = V[st] || V.maint;
+  document.title = v.t + ' — THE CLEAN COFFEE';
+  document.getElementById('card').innerHTML = '<div class="ic">' + (ICON[st] || ICON.maint) + '</div><h1>' + v.t + '</h1><p class="lead">' + v.l + '</p>' + (v.box ? '<div class="box">' + v.box + '</div>' : '') + '<div class="acts">' + v.acts + '</div>' + (v.help ? '<p class="help">' + v.help + '</p>' : '') + (v.code ? '<p class="code">' + v.code + '</p>' : '');
+})();
+</script>
+<script src="../ux-pins.js"></script><script src="../ux-bridge.js"></script>
+</body>
+</html>

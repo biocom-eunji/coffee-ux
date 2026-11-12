@@ -1237,6 +1237,11 @@ function updateBodyScrollLock(){
 .tb-help summary::-webkit-details-marker{display:none}
 .tb-help summary::after{content:"";width:8px;height:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg);margin-top:-4px}
 .tb-help[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+/* 모바일에서 「주문번호를 모르세요?」가 세로로 좁게 눌리던 문제 — 상자를 한 줄 폭으로 */
+/* tobe-common.js의 .tb-help(22px 동그란 도움말 아이콘)와 이름이 겹쳐 눌리던 것을 되돌림 */
+details.tb-help{display:block!important;position:static!important;width:100%!important;height:auto!important;margin:18px 0 0!important;padding:0!important;border-radius:0!important;border:1px solid var(--hair)!important;background:#F8F6F1!important;box-sizing:border-box}
+details.tb-help::before{display:none!important}
+details.tb-help summary{width:100%;box-sizing:border-box}
 .tb-help div{padding:0 16px 16px;font-size:13.5px;line-height:1.75;color:var(--slate);word-break:keep-all}
 .tb-help div a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .tb-login{display:block;margin-top:10px;padding:13px 0;border:1px solid var(--ink);text-align:center;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none}

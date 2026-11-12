@@ -90,6 +90,11 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: 26px; line-height: 
 
 .screen { width: 390px; height: calc(var(--h) * 1px); transform: scale(var(--s)); transform-origin: 0 0; position: relative; overflow: hidden; background: var(--m-bg); color: var(--m-slate); font-family: var(--sans); line-height: 1.6; }
 [hidden] { display: none !important; }
+.nopage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: #8A9099; background: #F1EFEA; }
+html[data-view="pc"] .nopage { font-size: 26px; }
+:root[data-theme="dark"] .nopage { background: #1B2229; color: #7F8A94; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nopage { background: #1B2229; color: #7F8A94; } }
+
 
 /* 핫스팟 */
 .hs { position: relative; cursor: help; border-radius: 3px; }
@@ -1691,12 +1696,708 @@ html:not([data-view="pc"]) .pair[data-pair="collection"] { display: none !import
     </div>
   </div>
 
+  <!-- 예외 상태 · 로그인 실패 (신규 화면, AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-login" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-login" title="TO-BE 로그인 실패"></iframe></div></div>
+    </div>
+    <p class="note">아이디 또는 비밀번호가 맞지 않을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 예외 상태 · 회원가입 입력 오류 (신규 화면, AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-signup" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-signup" title="TO-BE 회원가입 입력 오류"></iframe></div></div>
+    </div>
+    <p class="note">가입 정보를 잘못 입력했을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 예외 상태 · 신규 회원 마이페이지 (신규 화면, AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-mypage" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-mypage" title="TO-BE 신규 회원 마이페이지"></iframe></div></div>
+    </div>
+    <p class="note">가입 직후 주문 · 적립금이 없을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 예외 상태 · 빈 장바구니 결제 (신규 화면, AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-checkout" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-checkout" title="TO-BE 빈 장바구니 결제"></iframe></div></div>
+    </div>
+    <p class="note">담긴 상품 없이 결제 화면에 들어왔을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 예외 상태 · 주문 없는 주문 완료 (신규 화면, AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-order-complete" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-order-complete" title="TO-BE 주문 없는 주문 완료"></iframe></div></div>
+    </div>
+    <p class="note">주문 없이 주문 완료 화면에 들어왔을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 인증번호 오류 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-code" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-code" title="TO-BE 인증번호 오류"></iframe></div></div>
+    </div>
+    <p class="note">인증번호가 맞지 않을 때(아이디 찾기) — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 인증 시간 초과 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-expired" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-expired" title="TO-BE 인증 시간 초과"></iframe></div></div>
+    </div>
+    <p class="note">인증 시간(3분)이 지났을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 일치하는 계정 없음 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-none" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-none" title="TO-BE 일치하는 계정 없음"></iframe></div></div>
+    </div>
+    <p class="note">이름·휴대폰 번호로 가입한 계정이 없을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 아이디 확인 결과 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-id" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-id" title="TO-BE 아이디 확인 결과"></iframe></div></div>
+    </div>
+    <p class="note">본인 확인 후 가입한 아이디를 보여줄 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 새 비밀번호 설정 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-pw" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-pw" title="TO-BE 새 비밀번호 설정"></iframe></div></div>
+    </div>
+    <p class="note">새 비밀번호가 규칙에 맞지 않거나 서로 다를 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 비밀번호 변경 완료 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-find-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-find-done" title="TO-BE 비밀번호 변경 완료"></iframe></div></div>
+    </div>
+    <p class="note">비밀번호를 바꾼 뒤 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 계정 · 인증 · 신규 · 가입 인증번호 오류 (AS-IS 없음) -->
+  <div class="pair solo" data-pair="x-signup-code" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-signup-code" title="TO-BE 가입 인증번호 오류"></iframe></div></div>
+    </div>
+    <p class="note">회원가입 2단계에서 휴대전화 인증번호가 맞지 않을 때 — 현재 사이트에는 없는 화면이라 TO-BE만 있어요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 정기배송 관리 -->
+  <div class="pair solo" data-pair="x-sub-manage" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-sub-manage" title="AS-IS x-sub-manage"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-manage" title="TO-BE 정기배송 관리"></iframe></div></div>
+    </div>
+    <p class="note">진행 중인 정기배송을 보고 주기 · 미루기 · 카드 변경 · 해지를 하는 곳 — 이미 있던 기능을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 결제 실패 -->
+  <div class="pair solo" data-pair="x-sub-fail" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-fail" title="TO-BE 결제 실패"></iframe></div></div>
+    </div>
+    <p class="note">정기배송 회차 결제가 되지 않았을 때 — 새로 만든 화면이에요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 카드 변경 -->
+  <div class="pair solo" data-pair="x-sub-card" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-card" title="TO-BE 카드 변경"></iframe></div></div>
+    </div>
+    <p class="note">결제 카드를 바꾸는 시트 — 지금은 입력창(prompt)으로만 되어 있어 새로 만든 화면이에요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 해지 확인 · 약정 중 -->
+  <div class="pair solo" data-pair="x-sub-cancel-lock" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-sub-cancel-lock" title="AS-IS x-sub-cancel-lock"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-cancel-lock" title="TO-BE 해지 확인 · 약정 중"></iframe></div></div>
+    </div>
+    <p class="note">약정 기간 안에 해지할 때 위약금 내역과 동의 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 해지 확인 -->
+  <div class="pair solo" data-pair="x-sub-cancel" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-sub-cancel" title="AS-IS x-sub-cancel"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-cancel" title="TO-BE 해지 확인"></iframe></div></div>
+    </div>
+    <p class="note">약정이 없는 정기배송을 해지할 때 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 정기배송 · 신규 · 해지 접수 완료 -->
+  <div class="pair solo" data-pair="x-sub-cancel-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-sub-cancel-done" title="AS-IS x-sub-cancel-done"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-sub-cancel-done" title="TO-BE 해지 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">해지 신청이 접수된 뒤 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 주문·배송 조회 -->
+  <div class="pair solo" data-pair="x-ord-list" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-ord-list" title="AS-IS x-ord-list"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-list" title="TO-BE 주문·배송 조회"></iframe></div></div>
+    </div>
+    <p class="note">주문 상태별 목록과 버튼(취소 · 구매 확정 · 교환·반품 · 리뷰) — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 주문 취소 확인 -->
+  <div class="pair solo" data-pair="x-ord-cancel" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-cancel" title="TO-BE 주문 취소 확인"></iframe></div></div>
+    </div>
+    <p class="note">당일 오후 1시 전 취소 — 브라우저 기본 확인창을 시트로 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 취소 요청 확인 -->
+  <div class="pair solo" data-pair="x-ord-cancel-late" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-cancel-late" title="TO-BE 취소 요청 확인"></iframe></div></div>
+    </div>
+    <p class="note">오후 1시 이후(로스팅 시작) 취소 요청 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 취소 접수 완료 -->
+  <div class="pair solo" data-pair="x-ord-cancel-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-cancel-done" title="TO-BE 취소 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">취소가 접수된 뒤 환불 안내 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 구매 확정 확인 -->
+  <div class="pair solo" data-pair="x-ord-confirm" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-confirm" title="TO-BE 구매 확정 확인"></iframe></div></div>
+    </div>
+    <p class="note">바로 확정되던 것을 적립 · 교환/반품 안내가 있는 확인 시트로 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 구매 확정 완료 -->
+  <div class="pair solo" data-pair="x-ord-confirm-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-confirm-done" title="TO-BE 구매 확정 완료"></iframe></div></div>
+    </div>
+    <p class="note">확정 뒤 리뷰 쓰기로 이어지는 완료 시트 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 교환·반품 신청 -->
+  <div class="pair solo" data-pair="x-ord-claim" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-ord-claim" title="AS-IS x-ord-claim"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-claim" title="TO-BE 교환·반품 신청"></iframe></div></div>
+    </div>
+    <p class="note">사유 · 상품 · 사진 첨부 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 교환·반품 접수 완료 -->
+  <div class="pair solo" data-pair="x-ord-claim-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-claim-done" title="TO-BE 교환·반품 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">한 줄 글자였던 접수 결과를 완료 시트로 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 리뷰 작성 -->
+  <div class="pair solo" data-pair="x-ord-review" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-ord-review" title="AS-IS x-ord-review"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-review" title="TO-BE 리뷰 작성"></iframe></div></div>
+    </div>
+    <p class="note">별점 · 내용 · 사진 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 리뷰 등록 완료 -->
+  <div class="pair solo" data-pair="x-ord-review-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-review-done" title="TO-BE 리뷰 등록 완료"></iframe></div></div>
+    </div>
+    <p class="note">등록 뒤 적립 안내와 「내가 쓴 리뷰 보기」 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 내가 쓴 리뷰 -->
+  <div class="pair solo" data-pair="x-ord-myreviews" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-ord-myreviews" title="TO-BE 내가 쓴 리뷰"></iframe></div></div>
+    </div>
+    <p class="note">작성한 리뷰 목록과 적립 내역 — 새로 만든 화면이에요(없을 때 안내 포함).</p>
+  </div>
+
+  <!-- 주문 후 · 신규 · 비회원 조회 결과 -->
+  <div class="pair solo" data-pair="x-lookup-result" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-lookup-result" title="AS-IS x-lookup-result"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-lookup-result" title="TO-BE 비회원 조회 결과"></iframe></div></div>
+    </div>
+    <p class="note">주문번호 · 휴대폰 · 비밀번호로 조회한 결과 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 품절 상품 카드 -->
+  <div class="pair solo" data-pair="x-soldout-list" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-soldout-list" title="TO-BE 품절 상품 카드"></iframe></div></div>
+    </div>
+    <p class="note">컬렉션에서 품절 상품이 어떻게 보이는지 — 품절 표시 스타일은 있었지만 품절 상태가 없어 볼 수 없던 화면이에요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 품절 상품 상세 -->
+  <div class="pair solo" data-pair="x-soldout-detail" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-soldout-detail" title="TO-BE 품절 상품 상세"></iframe></div></div>
+    </div>
+    <p class="note">품절된 상품의 상세 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 재입고 알림 신청 -->
+  <div class="pair solo" data-pair="x-restock" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-restock" title="TO-BE 재입고 알림 신청"></iframe></div></div>
+    </div>
+    <p class="note">「재입고 알림 받기」를 눌렀을 때의 시트 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 재입고 알림 신청 완료 -->
+  <div class="pair solo" data-pair="x-restock-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-restock-done" title="TO-BE 재입고 알림 신청 완료"></iframe></div></div>
+    </div>
+    <p class="note">알림을 신청한 뒤 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 장바구니 품절 안내 -->
+  <div class="pair solo" data-pair="x-cart-soldout" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-cart-soldout" title="TO-BE 장바구니 품절 안내"></iframe></div></div>
+    </div>
+    <p class="note">장바구니에 품절된 상품이 있을 때 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 쿠폰 최소 금액 미달 -->
+  <div class="pair solo" data-pair="x-coupon-min" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-coupon-min" title="AS-IS x-coupon-min"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 개선한 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-coupon-min" title="TO-BE 쿠폰 최소 금액 미달"></iframe></div></div>
+    </div>
+    <p class="note">쓸 수 없는 쿠폰의 이유를 「N원 더 담으면 쓸 수 있어요」로 알려줘요 — 기존 화면을 고쳤어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 적립금 한도 초과 -->
+  <div class="pair solo" data-pair="x-points-over" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-points-over" title="AS-IS x-points-over"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 개선한 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-points-over" title="TO-BE 적립금 한도 초과"></iframe></div></div>
+    </div>
+    <p class="note">보유 적립금보다 많이 입력했을 때 안내 — 기존에는 조용히 줄여 계산했어요.</p>
+  </div>
+
+  <!-- 품절 · 쿠폰 · 적립금 · 적립금 5,000원 미만 -->
+  <div class="pair solo" data-pair="x-points-low" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-points-low" title="AS-IS x-points-low"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-points-low" title="TO-BE 적립금 5,000원 미만"></iframe></div></div>
+    </div>
+    <p class="note">보유 적립금이 사용 기준 미만일 때 — 이미 있던 안내를 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 회원 탈퇴 확인 -->
+  <div class="pair solo" data-pair="x-leave" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-leave" title="TO-BE 회원 탈퇴 확인"></iframe></div></div>
+    </div>
+    <p class="note">탈퇴하면 사라지는 것과 남는 것을 알려주는 시트 — 지금은 기본 확인창이라 새로 설계했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 탈퇴 불가 -->
+  <div class="pair solo" data-pair="x-leave-blocked" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-leave-blocked" title="TO-BE 탈퇴 불가"></iframe></div></div>
+    </div>
+    <p class="note">진행 중인 주문 · 정기배송이 있을 때 — 지금은 기본 안내창이라 새로 설계했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 탈퇴 완료 -->
+  <div class="pair solo" data-pair="x-leave-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-leave-done" title="TO-BE 탈퇴 완료"></iframe></div></div>
+    </div>
+    <p class="note">탈퇴가 끝난 뒤 — 지금은 바로 홈으로 이동해서 새로 설계했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 휴면 계정 안내 -->
+  <div class="pair solo" data-pair="x-dormant" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-dormant" title="TO-BE 휴면 계정 안내"></iframe></div></div>
+    </div>
+    <p class="note">12개월 이상 이용하지 않은 계정으로 로그인했을 때 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 휴면 해제 완료 -->
+  <div class="pair solo" data-pair="x-dormant-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-dormant-done" title="TO-BE 휴면 해제 완료"></iframe></div></div>
+    </div>
+    <p class="note">본인 확인 뒤 휴면이 해제됐을 때 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 점검 중 -->
+  <div class="pair solo" data-pair="x-maint" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-maint" title="TO-BE 점검 중"></iframe></div></div>
+    </div>
+    <p class="note">서비스 점검 중 안내 — 새로 만든 화면이에요(점검 일시는 예시).</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 서버 오류 -->
+  <div class="pair solo" data-pair="x-500" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-500" title="TO-BE 서버 오류"></iframe></div></div>
+    </div>
+    <p class="note">일시적인 서버 오류 — 새로 만든 화면이에요.</p>
+  </div>
+
+  <!-- 탈퇴 · 휴면 · 시스템 · 인터넷 연결 끊김 -->
+  <div class="pair solo" data-pair="x-offline" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-offline" title="TO-BE 인터넷 연결 끊김"></iframe></div></div>
+    </div>
+    <p class="note">인터넷에 연결되지 않았을 때 — 새로 만든 화면이에요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 신청 접수 완료 -->
+  <div class="pair solo" data-pair="x-biz-applied" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-applied" title="TO-BE 신청 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">등록 신청 뒤 작은 안내 한 줄이던 것을 진행 단계가 보이는 접수 화면으로 새로 설계했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 확인 중 -->
+  <div class="pair solo" data-pair="x-biz-pending" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-biz-pending" title="AS-IS x-biz-pending"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-pending" title="TO-BE 확인 중"></iframe></div></div>
+    </div>
+    <p class="note">사업자 확인 중 마이페이지(전용 단가 잠금) — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 반려 · 확인 필요 -->
+  <div class="pair solo" data-pair="x-biz-rejected" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-rejected" title="TO-BE 반려 · 확인 필요"></iframe></div></div>
+    </div>
+    <p class="note">사업자 확인이 완료되지 않았을 때 사유와 다음 행동 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 서류 다시 올리기 -->
+  <div class="pair solo" data-pair="x-biz-resubmit" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-resubmit" title="TO-BE 서류 다시 올리기"></iframe></div></div>
+    </div>
+    <p class="note">반려 뒤 사업자등록증을 다시 올리는 시트 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 재신청 접수 완료 -->
+  <div class="pair solo" data-pair="x-biz-resubmit-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-resubmit-done" title="TO-BE 재신청 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">다시 신청이 접수된 뒤 확인 중으로 돌아가는 화면 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 승인 완료 안내 -->
+  <div class="pair solo" data-pair="x-biz-approved" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><div class="nopage">해당 화면이 존재하지 않습니다</div></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 신규 화면</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-approved" title="TO-BE 승인 완료 안내"></iframe></div></div>
+    </div>
+    <p class="note">사업자 확인이 끝났을 때 전용 단가 안내 — 새로 설계했어요.</p>
+  </div>
+
+  <!-- 사업자 · 신규 · 주문 접수 완료 -->
+  <div class="pair solo" data-pair="x-biz-order-done" data-iframe hidden>
+    <div class="col">
+      <span class="lab as"><b>AS-IS</b></span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="asis" data-page="x-biz-order-done" title="AS-IS x-biz-order-done"></iframe></div></div>
+    </div>
+    <div class="col">
+      <span class="lab to"><b>TO-BE</b> · 상태 바로 보기</span>
+      <div class="frame"><i class="island"></i><div class="screen"><iframe data-variant="tobe" data-page="x-biz-order-done" title="TO-BE 주문 접수 완료"></iframe></div></div>
+    </div>
+    <p class="note">사업자 주문이 접수된 뒤 — 이미 있던 화면을 바로 열어 볼 수 있게 했어요.</p>
+  </div>
+
   <div class="tabs" id="pageTabs" role="tablist" aria-label="화면 선택">
     <div class="tg"><span class="tgl">구매</span><button type="button" role="tab" data-go="home" aria-selected="false">홈</button><button type="button" role="tab" data-go="list" aria-selected="false">상품 목록</button><button type="button" role="tab" data-go="menu" aria-selected="false">햄버거 메뉴</button><button type="button" role="tab" data-go="subscribe" aria-selected="false">정기구독</button><button type="button" role="tab" data-go="events" aria-selected="false">이벤트</button><button type="button" role="tab" data-go="event" aria-selected="false">이벤트 상세</button><button type="button" role="tab" data-go="search" aria-selected="false">검색</button></div>
     <div class="tg"><span class="tgl">상품 · 선물</span><button type="button" role="tab" data-go="product-colombia" aria-selected="false">콜롬비아</button><button type="button" role="tab" data-go="product-aurora" aria-selected="false">오로라 블렌드</button><button type="button" role="tab" data-go="product-ethiopia" aria-selected="false">에티오피아</button><button type="button" role="tab" data-go="product-guatemala" aria-selected="false">과테말라</button><button type="button" role="tab" data-go="product-kenya" aria-selected="false">케냐</button><button type="button" role="tab" data-go="product-png" aria-selected="false">파푸아뉴기니</button><button type="button" role="tab" data-go="product-png-decaf" aria-selected="false">파푸아뉴기니 디카페인</button><button type="button" role="tab" data-go="product-siesta" aria-selected="false">시에스타</button><button type="button" role="tab" data-go="product-vinchaud" aria-selected="false">벨지안 뱅쇼</button><button type="button" role="tab" data-go="product-velvet" aria-selected="false">벨벳 블렌드</button><button type="button" role="tab" data-go="product-dripbag-single" aria-selected="false">드립백 상세</button><button type="button" role="tab" data-go="product-bulletproof" aria-selected="false">방탄커피 상세</button><button type="button" role="tab" data-go="product-note" aria-selected="false">굿즈 상세</button><button type="button" role="tab" data-go="first-note" aria-selected="false">FIRST NOTE</button><button type="button" role="tab" data-go="gift" aria-selected="false">선물 모음 (삭제 제안)</button><button type="button" role="tab" data-go="gift-dripbag" aria-selected="false">선물 드립백 세트</button><button type="button" role="tab" data-go="gift-tasting" aria-selected="false">선물 디스커버리 세트</button><button type="button" role="tab" data-go="gift-receive" aria-selected="false">선물 받기 (삭제 제안)</button></div>
     <div class="tg"><span class="tgl">주문 · 결제</span><button type="button" role="tab" data-go="cart" aria-selected="false">장바구니</button><button type="button" role="tab" data-go="checkout" aria-selected="false">결제</button><button type="button" role="tab" data-go="order-complete" aria-selected="false">주문 완료</button><button type="button" role="tab" data-go="payment-fail" aria-selected="false">결제 실패</button></div>
     <div class="tg"><span class="tgl">브랜드 · 정보</span><button type="button" role="tab" data-go="story" aria-selected="false">더클린 스토리</button><button type="button" role="tab" data-go="standard" aria-selected="false">더클린 기준</button><button type="button" role="tab" data-go="guide" aria-selected="false">커피 가이드</button><button type="button" role="tab" data-go="reserve-club" aria-selected="false">리저브 클럽</button><button type="button" role="tab" data-go="support" aria-selected="false">고객센터</button></div>
     <div class="tg"><span class="tgl">회원</span><button type="button" role="tab" data-go="login" aria-selected="false">로그인</button><button type="button" role="tab" data-go="signup" aria-selected="false">회원가입</button><button type="button" role="tab" data-go="find-account" aria-selected="false">계정 찾기</button><button type="button" role="tab" data-go="mypage" data-login="on" aria-selected="false">마이페이지</button><button type="button" role="tab" data-go="mypage" data-login="off" aria-selected="false">마이페이지 · 로그인 전</button><button type="button" role="tab" data-go="notices" aria-selected="false">알림함 (삭제 제안)</button><button type="button" role="tab" data-go="notice-settings" aria-selected="false">알림 설정 (삭제 제안)</button></div>
+    <div class="tg"><span class="tgl">예외 상태 · 신규</span><button type="button" role="tab" data-go="x-login" aria-selected="false">로그인 실패</button><button type="button" role="tab" data-go="x-signup" aria-selected="false">회원가입 입력 오류</button><button type="button" role="tab" data-go="x-mypage" aria-selected="false">신규 회원 마이페이지</button><button type="button" role="tab" data-go="x-checkout" aria-selected="false">빈 장바구니 결제</button><button type="button" role="tab" data-go="x-order-complete" aria-selected="false">주문 없는 주문 완료</button></div>
+    <div class="tg"><span class="tgl">계정 · 인증 · 신규</span><button type="button" role="tab" data-go="x-find-code" aria-selected="false">인증번호 오류</button><button type="button" role="tab" data-go="x-find-expired" aria-selected="false">인증 시간 초과</button><button type="button" role="tab" data-go="x-find-none" aria-selected="false">일치하는 계정 없음</button><button type="button" role="tab" data-go="x-find-id" aria-selected="false">아이디 확인 결과</button><button type="button" role="tab" data-go="x-find-pw" aria-selected="false">새 비밀번호 설정</button><button type="button" role="tab" data-go="x-find-done" aria-selected="false">비밀번호 변경 완료</button><button type="button" role="tab" data-go="x-signup-code" aria-selected="false">가입 인증번호 오류</button></div>
+    <div class="tg"><span class="tgl">정기배송 · 신규</span><button type="button" role="tab" data-go="x-sub-manage" aria-selected="false">정기배송 관리</button><button type="button" role="tab" data-go="x-sub-fail" aria-selected="false">결제 실패</button><button type="button" role="tab" data-go="x-sub-card" aria-selected="false">카드 변경</button><button type="button" role="tab" data-go="x-sub-cancel-lock" aria-selected="false">해지 확인 · 약정 중</button><button type="button" role="tab" data-go="x-sub-cancel" aria-selected="false">해지 확인</button><button type="button" role="tab" data-go="x-sub-cancel-done" aria-selected="false">해지 접수 완료</button></div>
+    <div class="tg"><span class="tgl">주문 후 · 신규</span><button type="button" role="tab" data-go="x-ord-list" aria-selected="false">주문·배송 조회</button><button type="button" role="tab" data-go="x-ord-cancel" aria-selected="false">주문 취소 확인</button><button type="button" role="tab" data-go="x-ord-cancel-late" aria-selected="false">취소 요청 확인</button><button type="button" role="tab" data-go="x-ord-cancel-done" aria-selected="false">취소 접수 완료</button><button type="button" role="tab" data-go="x-ord-confirm" aria-selected="false">구매 확정 확인</button><button type="button" role="tab" data-go="x-ord-confirm-done" aria-selected="false">구매 확정 완료</button><button type="button" role="tab" data-go="x-ord-claim" aria-selected="false">교환·반품 신청</button><button type="button" role="tab" data-go="x-ord-claim-done" aria-selected="false">교환·반품 접수 완료</button><button type="button" role="tab" data-go="x-ord-review" aria-selected="false">리뷰 작성</button><button type="button" role="tab" data-go="x-ord-review-done" aria-selected="false">리뷰 등록 완료</button><button type="button" role="tab" data-go="x-ord-myreviews" aria-selected="false">내가 쓴 리뷰</button><button type="button" role="tab" data-go="x-lookup-result" aria-selected="false">비회원 조회 결과</button></div>
+    <div class="tg"><span class="tgl">품절 · 쿠폰 · 신규</span><button type="button" role="tab" data-go="x-soldout-list" aria-selected="false">품절 상품 카드</button><button type="button" role="tab" data-go="x-soldout-detail" aria-selected="false">품절 상품 상세</button><button type="button" role="tab" data-go="x-restock" aria-selected="false">재입고 알림 신청</button><button type="button" role="tab" data-go="x-restock-done" aria-selected="false">재입고 알림 신청 완료</button><button type="button" role="tab" data-go="x-cart-soldout" aria-selected="false">장바구니 품절 안내</button><button type="button" role="tab" data-go="x-coupon-min" aria-selected="false">쿠폰 최소 금액 미달</button><button type="button" role="tab" data-go="x-points-over" aria-selected="false">적립금 한도 초과</button><button type="button" role="tab" data-go="x-points-low" aria-selected="false">적립금 5,000원 미만</button></div>
+    <div class="tg"><span class="tgl">탈퇴 · 시스템 · 신규</span><button type="button" role="tab" data-go="x-leave" aria-selected="false">회원 탈퇴 확인</button><button type="button" role="tab" data-go="x-leave-blocked" aria-selected="false">탈퇴 불가</button><button type="button" role="tab" data-go="x-leave-done" aria-selected="false">탈퇴 완료</button><button type="button" role="tab" data-go="x-dormant" aria-selected="false">휴면 계정 안내</button><button type="button" role="tab" data-go="x-dormant-done" aria-selected="false">휴면 해제 완료</button><button type="button" role="tab" data-go="x-maint" aria-selected="false">점검 중</button><button type="button" role="tab" data-go="x-500" aria-selected="false">서버 오류</button><button type="button" role="tab" data-go="x-offline" aria-selected="false">인터넷 연결 끊김</button></div>
+    <div class="tg"><span class="tgl">사업자 · 신규</span><button type="button" role="tab" data-go="x-biz-applied" aria-selected="false">신청 접수 완료</button><button type="button" role="tab" data-go="x-biz-pending" aria-selected="false">확인 중</button><button type="button" role="tab" data-go="x-biz-rejected" aria-selected="false">반려 · 확인 필요</button><button type="button" role="tab" data-go="x-biz-resubmit" aria-selected="false">서류 다시 올리기</button><button type="button" role="tab" data-go="x-biz-resubmit-done" aria-selected="false">재신청 접수 완료</button><button type="button" role="tab" data-go="x-biz-approved" aria-selected="false">승인 완료 안내</button><button type="button" role="tab" data-go="x-biz-order-done" aria-selected="false">주문 접수 완료</button></div>
     <div class="tg"><span class="tgl">약관 · 기타</span><button type="button" role="tab" data-go="terms" aria-selected="false">이용약관</button><button type="button" role="tab" data-go="privacy" aria-selected="false">개인정보처리방침</button><button type="button" role="tab" data-go="archive" aria-selected="false">ROASTER’S NOTE</button><button type="button" role="tab" data-go="404" aria-selected="false">404</button></div>
     <div class="tg"><span class="tgl">B2B</span><button type="button" role="tab" data-go="business-login" aria-selected="false">사업자 로그인</button><button type="button" role="tab" data-go="business-signup" aria-selected="false">사업자 회원 등록</button><button type="button" role="tab" data-go="business-mypage" aria-selected="false">사업자 마이페이지</button><button type="button" role="tab" data-go="business-event" aria-selected="false">행사 상품</button><button type="button" role="tab" data-go="business-sample" aria-selected="false">테이스팅 샘플 신청</button><button type="button" role="tab" data-go="business-cart" aria-selected="false">사업자 장바구니</button><button type="button" role="tab" data-go="business-p-colombia" aria-selected="false">콜롬비아</button><button type="button" role="tab" data-go="business-p-ethiopia" aria-selected="false">에티오피아</button><button type="button" role="tab" data-go="business-p-guatemala" aria-selected="false">과테말라</button><button type="button" role="tab" data-go="business-p-kenya" aria-selected="false">케냐</button><button type="button" role="tab" data-go="business-p-png" aria-selected="false">파푸아뉴기니</button><button type="button" role="tab" data-go="business-p-png-decaf" aria-selected="false">파푸아뉴기니 디카페인</button><button type="button" role="tab" data-go="business-p-aurora" aria-selected="false">오로라 블렌드</button><button type="button" role="tab" data-go="business-p-siesta" aria-selected="false">시에스타</button><button type="button" role="tab" data-go="business-p-velvet" aria-selected="false">벨벳 블렌드</button><button type="button" role="tab" data-go="business-p-bulletproof" aria-selected="false">방탄커피</button><button type="button" role="tab" data-go="business-p-dripbag" aria-selected="false">드립백 단품</button><button type="button" role="tab" data-go="business-p-dripbag-set" aria-selected="false">드립백 세트</button><button type="button" role="tab" data-go="business-p-discovery" aria-selected="false">디스커버리 세트</button><button type="button" role="tab" data-go="business-p-first-note" aria-selected="false">FIRST NOTE 4종</button></div>
   </div>
@@ -1824,7 +2525,7 @@ html:not([data-view="pc"]) .pair[data-pair="collection"] { display: none !import
   window.addEventListener('scroll', function () { if (current) place(current); }, { passive: true });
   window.addEventListener('resize', hide);
 
-  var NAMES = {"home": "홈", "list": "상품 목록", "menu": "햄버거 메뉴", "subscribe": "정기구독", "events": "이벤트", "event": "이벤트 상세", "search": "검색", "product-colombia": "콜롬비아", "product-dripbag-single": "드립백 상세", "product-bulletproof": "방탄커피 상세", "product-note": "굿즈 상세", "first-note": "FIRST NOTE", "gift": "선물 모음 (삭제 제안)", "gift-dripbag": "선물 드립백 세트", "gift-tasting": "선물 디스커버리 세트", "gift-receive": "선물 받기 (삭제 제안)", "cart": "장바구니", "checkout": "결제", "order-complete": "주문 완료", "payment-fail": "결제 실패", "order-lookup": "비회원 주문 조회", "story": "더클린 스토리", "standard": "더클린 기준", "guide": "커피 가이드", "reserve-club": "리저브 클럽", "support": "고객센터", "login": "로그인", "signup": "회원가입", "find-account": "계정 찾기", "mypage": "마이페이지", "notices": "알림함 (삭제 제안)", "notice-settings": "알림 설정 (삭제 제안)", "product-aurora": "오로라 블렌드", "product-ethiopia": "에티오피아", "product-guatemala": "과테말라", "product-kenya": "케냐", "product-png": "파푸아뉴기니", "product-png-decaf": "파푸아뉴기니 디카페인", "product-siesta": "시에스타", "product-vinchaud": "벨지안 뱅쇼", "collection": "상품 목록", "product-velvet": "벨벳 블렌드", "terms": "이용약관", "privacy": "개인정보처리방침", "archive": "ROASTER’S NOTE", "404": "404", "business-login": "B2B 사업자 로그인", "business-signup": "B2B 사업자 회원 등록", "business-mypage": "B2B 사업자 마이페이지", "business-event": "B2B 행사 상품", "business-sample": "B2B 테이스팅 샘플 신청", "business-cart": "B2B 사업자 장바구니", "business-p-colombia": "B2B 콜롬비아", "business-p-ethiopia": "B2B 에티오피아", "business-p-guatemala": "B2B 과테말라", "business-p-kenya": "B2B 케냐", "business-p-png": "B2B 파푸아뉴기니", "business-p-png-decaf": "B2B 파푸아뉴기니 디카페인", "business-p-aurora": "B2B 오로라 블렌드", "business-p-siesta": "B2B 시에스타", "business-p-velvet": "B2B 벨벳 블렌드", "business-p-bulletproof": "B2B 방탄커피", "business-p-dripbag": "B2B 드립백 단품", "business-p-dripbag-set": "B2B 드립백 세트", "business-p-discovery": "B2B 디스커버리 세트", "business-p-first-note": "B2B FIRST NOTE 4종"};
+  var NAMES = {"home": "홈", "list": "상품 목록", "menu": "햄버거 메뉴", "subscribe": "정기구독", "events": "이벤트", "event": "이벤트 상세", "search": "검색", "product-colombia": "콜롬비아", "product-dripbag-single": "드립백 상세", "product-bulletproof": "방탄커피 상세", "product-note": "굿즈 상세", "first-note": "FIRST NOTE", "gift": "선물 모음 (삭제 제안)", "gift-dripbag": "선물 드립백 세트", "gift-tasting": "선물 디스커버리 세트", "gift-receive": "선물 받기 (삭제 제안)", "cart": "장바구니", "checkout": "결제", "order-complete": "주문 완료", "payment-fail": "결제 실패", "order-lookup": "비회원 주문 조회", "story": "더클린 스토리", "standard": "더클린 기준", "guide": "커피 가이드", "reserve-club": "리저브 클럽", "support": "고객센터", "login": "로그인", "signup": "회원가입", "find-account": "계정 찾기", "mypage": "마이페이지", "notices": "알림함 (삭제 제안)", "notice-settings": "알림 설정 (삭제 제안)", "product-aurora": "오로라 블렌드", "product-ethiopia": "에티오피아", "product-guatemala": "과테말라", "product-kenya": "케냐", "product-png": "파푸아뉴기니", "product-png-decaf": "파푸아뉴기니 디카페인", "product-siesta": "시에스타", "product-vinchaud": "벨지안 뱅쇼", "collection": "상품 목록", "product-velvet": "벨벳 블렌드", "terms": "이용약관", "privacy": "개인정보처리방침", "archive": "ROASTER’S NOTE", "404": "404", "business-login": "B2B 사업자 로그인", "business-signup": "B2B 사업자 회원 등록", "business-mypage": "B2B 사업자 마이페이지", "business-event": "B2B 행사 상품", "business-sample": "B2B 테이스팅 샘플 신청", "business-cart": "B2B 사업자 장바구니", "business-p-colombia": "B2B 콜롬비아", "business-p-ethiopia": "B2B 에티오피아", "business-p-guatemala": "B2B 과테말라", "business-p-kenya": "B2B 케냐", "business-p-png": "B2B 파푸아뉴기니", "business-p-png-decaf": "B2B 파푸아뉴기니 디카페인", "business-p-aurora": "B2B 오로라 블렌드", "business-p-siesta": "B2B 시에스타", "business-p-velvet": "B2B 벨벳 블렌드", "business-p-bulletproof": "B2B 방탄커피", "business-p-dripbag": "B2B 드립백 단품", "business-p-dripbag-set": "B2B 드립백 세트", "business-p-discovery": "B2B 디스커버리 세트", "business-p-first-note": "B2B FIRST NOTE 4종", "x-login": "로그인 실패", "x-signup": "회원가입 입력 오류", "x-mypage": "신규 회원 마이페이지", "x-checkout": "빈 장바구니 결제", "x-order-complete": "주문 없는 주문 완료", "x-find-code": "인증번호 오류", "x-find-expired": "인증 시간 초과", "x-find-none": "일치하는 계정 없음", "x-find-id": "아이디 확인 결과", "x-find-pw": "새 비밀번호 설정", "x-find-done": "비밀번호 변경 완료", "x-signup-code": "가입 인증번호 오류", "x-sub-manage": "정기배송 관리", "x-sub-fail": "결제 실패", "x-sub-card": "카드 변경", "x-sub-cancel-lock": "해지 확인 · 약정 중", "x-sub-cancel": "해지 확인", "x-sub-cancel-done": "해지 접수 완료", "x-ord-list": "주문·배송 조회", "x-ord-cancel": "주문 취소 확인", "x-ord-cancel-late": "취소 요청 확인", "x-ord-cancel-done": "취소 접수 완료", "x-ord-confirm": "구매 확정 확인", "x-ord-confirm-done": "구매 확정 완료", "x-ord-claim": "교환·반품 신청", "x-ord-claim-done": "교환·반품 접수 완료", "x-ord-review": "리뷰 작성", "x-ord-review-done": "리뷰 등록 완료", "x-ord-myreviews": "내가 쓴 리뷰", "x-lookup-result": "비회원 조회 결과", "x-soldout-list": "품절 상품 카드", "x-soldout-detail": "품절 상품 상세", "x-restock": "재입고 알림 신청", "x-restock-done": "재입고 알림 신청 완료", "x-cart-soldout": "장바구니 품절 안내", "x-coupon-min": "쿠폰 최소 금액 미달", "x-points-over": "적립금 한도 초과", "x-points-low": "적립금 5,000원 미만", "x-leave": "회원 탈퇴 확인", "x-leave-blocked": "탈퇴 불가", "x-leave-done": "탈퇴 완료", "x-dormant": "휴면 계정 안내", "x-dormant-done": "휴면 해제 완료", "x-maint": "점검 중", "x-500": "서버 오류", "x-offline": "인터넷 연결 끊김", "x-biz-applied": "사업자 신청 접수 완료", "x-biz-pending": "사업자 확인 중", "x-biz-rejected": "사업자 반려 · 확인 필요", "x-biz-resubmit": "사업자 서류 다시 올리기", "x-biz-resubmit-done": "사업자 재신청 접수 완료", "x-biz-approved": "사업자 승인 완료 안내", "x-biz-order-done": "사업자 주문 접수 완료"};
   var cur = 'list', before = 'list';
   var nowEl = document.getElementById('now');
   function go(name) {
@@ -2000,7 +2701,7 @@ html:not([data-view="pc"]) .pair[data-pair="collection"] { display: none !import
   window.__uxShow = function (name) {
     var nm = name === 'collection' ? 'list' : name;
     document.querySelectorAll('#pageTabs button').forEach(function (b) { var on = b.dataset.go === nm && (!b.dataset.login || (b.dataset.login === 'on') === !!(window.__uxLoggedIn && window.__uxLoggedIn())); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
-    if (frames['asis-' + name]) load(name);
+    if (frames['asis-' + name] || frames['tobe-' + name]) load(name);
     tip.hidden = true;
   };
 
